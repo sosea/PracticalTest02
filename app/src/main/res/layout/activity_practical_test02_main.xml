@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PracticalTest02MainActivity">
 
+
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="0dp"
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -66,6 +68,53 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Poll" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Server"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/server_port_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Server Port" />
+
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/connect_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Connect" />
+
+        </ScrollView>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
