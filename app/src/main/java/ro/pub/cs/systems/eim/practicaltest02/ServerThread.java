@@ -14,6 +14,7 @@ public class ServerThread extends Thread {
     private int port = 0;
     private ServerSocket serverSocket = null;
 
+    HashMap<String, String> map = new HashMap<>();
 
     public ServerThread(int port) {
         this.port = port;
@@ -45,10 +46,27 @@ public class ServerThread extends Thread {
                     switch (Integer.parseInt(operation))
                     {
                         case Constants.SET:
-                            Log.i("tag", "Set operation");
+                            if (map.containsKey(socket.getInetAddress().toString()))
+                            {
+
+                                Log.i("tag", "Set alarm operation for hour " + hour + ":" + minutes);
+                            } else {
+                                Log.i("tag", "Updated alarm operation from hour " + map.get(socket.getInetAddress().toString()) + " to " + hour + ":" + minutes);
+
+                            }
+                            map.put(socket.getInetAddress().toString(), hour + ":" + minutes);
                             break;
                         case Constants.RESET:
-                            Log.i("tag", "Reset operation");
+                            Log.i("tag", "Reset alarm operation");
+                            if (map.containsKey(socket.getInetAddress().toString()))
+                            {
+                                Log.i("tag", "Removed alarm from hour " + map.get(socket.getInetAddress().toString()));
+                                map.remove(socket.getInetAddress().toString());
+                            } else {
+                                Log.i("tag", "No alarm for current client");
+
+                            }
+
                             break;
                         case Constants.POLL:
                             Log.i("tag", "Poll operation");
